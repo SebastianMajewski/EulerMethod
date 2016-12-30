@@ -14,8 +14,25 @@ namespace EulerMethod
 
         public static void Main(string[] args)
         {
-            var n = GetN();
-            var a = GetA();
+            var goodData = false;
+            uint n = 0;
+            double a = 0;
+            while (!goodData)
+            {
+                try
+                {
+                    n = GetN();
+                    a = GetA();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    continue;
+                }
+
+                goodData = true;
+            }
+
             var h = GetH(a, n);
             var xArray = GenerateXArray(n, h);
             var yArray = GenerateYArray(xArray, h);
